@@ -1,0 +1,70 @@
+all runs: 103 s
+
+experiment       seed    greedy eval  last25  time,s
+baseline            0   500.0 +/-  0.0    55.2    20.3
+baseline            1    14.1 +/-  1.1   141.6    24.2
+baseline            2   189.1 +/-  3.9   293.2    26.5
+ex1_no_target       0     9.4 +/-  0.7    10.2     2.1
+ex1_no_target       1     9.4 +/-  0.7    11.3     2.1
+ex1_no_target       2     9.4 +/-  0.7    10.6     2.3
+ex2_no_replay       0   500.0 +/-  0.0   365.6    26.9
+ex2_no_replay       1    63.9 +/- 16.6   164.5    16.3
+ex2_no_replay       2   178.1 +/-  5.4   342.6    31.9
+ex3_trunc_bug       0    93.0 +/-  2.1    86.1    16.0
+ex3_trunc_bug       1   500.0 +/-  0.0   354.2    32.9
+ex3_trunc_bug       2   203.8 +/- 69.2   410.6    30.3
+ex4_decay_1k        0    95.0 +/-  2.6    76.3    29.7
+ex4_decay_1k        1   500.0 +/-  0.0   443.0    28.1
+ex4_decay_1k        2   500.0 +/-  0.0   324.6    27.2
+ex4_decay_50k       0   114.5 +/-  3.0    21.8     3.2
+ex4_decay_50k       1    66.5 +/-  2.6    23.6     3.2
+ex4_decay_50k       2   175.4 +/-  4.9    29.8     3.9
+ex6_double          0   105.0 +/-  1.6    62.6    22.7
+ex6_double          1   500.0 +/-  0.0   424.5    22.0
+ex6_double          2   180.6 +/- 29.2    72.0    25.5
+sb3_baseline        0   475.4 +/- 29.3   417.7    32.0
+sb3_baseline        1   171.7 +/- 60.7   213.9    35.3
+sb3_baseline        2   123.8 +/-  3.2   467.9    31.3
+sb3_net16           0    16.6 +/-  1.7    13.9    24.2
+sb3_net16           1   104.7 +/-  3.9   110.8    26.3
+sb3_net16           2    79.4 +/- 12.7   119.2    23.2
+sb3_net256          0   500.0 +/-  0.0   193.0    39.3
+sb3_net256          1   287.4 +/- 15.0   471.2    42.3
+sb3_net256          2   500.0 +/-  0.0   453.1    30.0
+sb3_net64           0    51.2 +/- 43.8   115.4    29.6
+sb3_net64           1   338.6 +/-210.7   314.2    31.4
+sb3_net64           2   500.0 +/-  0.0   452.5    27.0
+sb3_target1         0     9.3 +/-  0.8     9.8    35.4
+sb3_target1         1     9.5 +/-  0.6     9.7    40.0
+sb3_target1         2     9.7 +/-  0.7     9.3    23.5
+
+Summary over seeds (greedy eval mean):
+  baseline          234.4  (seeds: 500, 14, 189)  time 24s
+  ex1_no_target       9.4  (seeds: 9, 9, 9)  time 2s
+  ex2_no_replay     247.3  (seeds: 500, 64, 178)  time 25s
+  ex3_trunc_bug     265.6  (seeds: 93, 500, 204)  time 26s
+  ex4_decay_1k      365.0  (seeds: 95, 500, 500)  time 28s
+  ex4_decay_50k     118.8  (seeds: 114, 67, 175)  time 3s
+  ex6_double        261.8  (seeds: 105, 500, 181)  time 23s
+  sb3_baseline      257.0  (seeds: 475, 172, 124)  time 33s
+  sb3_net16          66.9  (seeds: 17, 105, 79)  time 25s
+  sb3_net64         296.6  (seeds: 51, 339, 500)  time 29s
+  sb3_net256        429.1  (seeds: 500, 287, 500)  time 37s
+  sb3_target1         9.5  (seeds: 9, 10, 10)  time 33s
+
+Ex6: mean predicted Q(s,a) on a replay batch at the end (true max = 100):
+  baseline     seed 0: final   80.9, peak   80.9
+  baseline     seed 1: final   88.9, peak   90.0
+  baseline     seed 2: final   82.5, peak   82.5
+  ex6_double   seed 0: final   90.6, peak   90.6
+  ex6_double   seed 1: final   82.5, peak   82.5
+  ex6_double   seed 2: final   87.3, peak   87.3
+
+Ex3: max_a Q along a greedy episode (start / near the end):
+  baseline       seed 0: len 500, Q[0:50]=  87.2, Q[last 50]=  86.7
+  baseline       seed 1: len  13, Q[0:50]=  94.6, Q[last 50]=  94.6
+  baseline       seed 2: len 187, Q[0:50]=  94.2, Q[last 50]=  24.2
+  ex3_trunc_bug  seed 0: len  95, Q[0:50]=  85.4, Q[last 50]=  90.2
+  ex3_trunc_bug  seed 1: len 500, Q[0:50]= 100.0, Q[last 50]= 100.5
+  ex3_trunc_bug  seed 2: len 203, Q[0:50]=  97.4, Q[last 50]=  26.0
+plots saved

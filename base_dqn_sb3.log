@@ -1,0 +1,34 @@
+=================================================================
+STEP 0: the Q-network that SB3 built
+=================================================================
+QNetwork(
+  (features_extractor): FlattenExtractor(
+    (flatten): Flatten(start_dim=1, end_dim=-1)
+  )
+  (q_net): Sequential(
+    (0): Linear(in_features=4, out_features=128, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=128, out_features=128, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=128, out_features=2, bias=True)
+  )
+)
+The target network is model.q_net_target - same shape, separate weights.
+
+=================================================================
+STEP 1: baseline - the untrained network
+=================================================================
+Untrained policy: return 91.6 +/- 6.9
+
+=================================================================
+STEP 2: train DQN
+=================================================================
+Training took 19 s, 40000 steps, 334 episodes.
+Mean return over the last 25 training episodes: 417.7
+
+=================================================================
+STEP 3: evaluate the greedy policy (deterministic=True)
+=================================================================
+DQN greedy policy: return 464.1 +/- 28.2   (maximum 500)
+Saved plot -> dqn_sb3_results.png
+Saved model -> dqn_cartpole.zip

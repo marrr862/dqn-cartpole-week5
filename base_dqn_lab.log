@@ -1,0 +1,36 @@
+=================================================================
+STEP 0: the environment
+=================================================================
+Observation space: Box([-4.8               -inf -0.41887903        -inf], [4.8               inf 0.41887903        inf], (4,), float32)
+Action space:      Discrete(2)  (0 = Left, 1 = Right)
+First state:       [ 0.014 -0.023 -0.046 -0.048]
+A Q-table would need one row per state - impossible for real numbers.
+
+=================================================================
+STEP 1: baseline - a random policy
+=================================================================
+Random policy: return 19.9 +/- 10.5
+
+=================================================================
+STEP 2: train DQN
+=================================================================
+  episode   25  steps    682  eps 0.87  mean return (last 25) =   27.3
+  episode   50  steps   1431  eps 0.73  mean return (last 25) =   30.0
+  episode   75  steps   2643  eps 0.50  mean return (last 25) =   48.5
+  episode  100  steps   7779  eps 0.05  mean return (last 25) =  205.4
+  episode  125  steps   9732  eps 0.05  mean return (last 25) =   78.1
+  episode  150  steps  12485  eps 0.05  mean return (last 25) =  110.1
+  episode  175  steps  15343  eps 0.05  mean return (last 25) =  114.3
+  episode  200  steps  18347  eps 0.05  mean return (last 25) =  120.2
+  episode  225  steps  21649  eps 0.05  mean return (last 25) =  132.1
+  episode  250  steps  24845  eps 0.05  mean return (last 25) =  127.8
+  episode  275  steps  29451  eps 0.05  mean return (last 25) =  184.2
+  episode  300  steps  39808  eps 0.05  mean return (last 25) =  414.3
+Training took 15 s, 38809 gradient steps.
+
+=================================================================
+STEP 3: evaluate the greedy policy (epsilon = 0)
+=================================================================
+DQN greedy policy: return 500.0 +/- 0.0   (maximum 500)
+Saved plot -> dqn_results.png
+Saved plot -> dqn_q_slice.png
